@@ -30,53 +30,55 @@ power wall, GPUs as AI accelerators, and FPGAs as reconfigurable hardware. It en
 > If it reports `VP9 + Opus`, this browser cannot encode H.264/AAC. The file is still valid and plays in Chrome and
 > VLC, but not in QuickTime. Chrome on macOS normally uses H.264 + AAC.
 
-## 2. 修改源码后重新打包
+## 2. Build from source
 
 ```bash
 npm install                      # three, mp4-muxer, esbuild
-node build.mjs                   # → docs/index.html（也就是 GitHub Pages 上的在线版本）
+node build.mjs                   # → docs/index.html (also the page served by GitHub Pages)
 ```
 
-| 文件 | 内容 |
+| File | What it does |
 |---|---|
-| `src/main.js` | 渲染器、bloom 后期、时间轴、章节切换闪光、预览 UI |
-| `src/scenes/cpu.js` | CPU：开盖 → fork 多线程粒子流 → 全息放大视图（SMT、SIMD） |
-| `src/scenes/wall.js` | 功耗墙：粒子主频曲线撞上玻璃天花板，芯片过热冒出余烬 |
-| `src/scenes/split.js` | 转折：核心逐拍分裂，1 → 9,216 |
-| `src/scenes/gpu.js` | GPU → AI：GEMM / Tensor Core → 核心阵列 → 粒子聚合成神经网络 |
-| `src/scenes/fpga.js` | FPGA：逻辑块按拍布线成流水线，数据包步进，结果逐列生成 |
-| `src/scenes/coop.js` | 异构计算：CPU 分发任务，结果汇成三色三旋臂粒子星系 |
-| `src/scene2d.js` | 序章与片尾（按 Python 版原样移植） |
-| `src/overlay.js` | 文字层：逐字浮现的章节标题、锚定 3D 物体的引线标注、标语 |
-| `src/export.js` | WebCodecs 导出（H.264/AAC 优先，VP9/Opus 备用） |
-| `src/util.js` | 时间、节拍（120 BPM）、配色、镜头关键帧 |
-| `music/synth.py` | 合成引擎：振荡器、合成器音色、鼓组、电影音效、混音与母带处理 |
-| `music/score.py` | 赛博电子配乐的编曲：每个音乐事件都对齐画面事件（时间点见 `synth.py` 里的 `EV`） |
+| `src/main.js` | Renderer, bloom post-processing, timeline, chapter-cut flashes, preview UI |
+| `src/scenes/cpu.js` | CPU: the lid lifts → fork/join threads as particle streams → magnified hologram of one core (SMT, SIMD) |
+| `src/scenes/wall.js` | Power Wall: a particle clock-speed curve hits a glass ceiling; the chip overheats and sheds embers |
+| `src/scenes/split.js` | Split: one core divides on every beat, 1 → 9,216 |
+| `src/scenes/gpu.js` | GPU → AI: GEMM on Tensor Cores → thousands of cores in lockstep → particles morph into a neural network |
+| `src/scenes/fpga.js` | FPGA: logic blocks wire themselves into a pipeline on the beat; packets step through; results fill column by column |
+| `src/scenes/coop.js` | Heterogeneous computing: the CPU dispatches work; the results merge into a three-armed, three-colour particle galaxy |
+| `src/scene2d.js` | Intro and finale (faithful ports of the original Python version) |
+| `src/overlay.js` | Text layer: kinetic chapter titles, leader-line callouts anchored to 3D objects, taglines |
+| `src/export.js` | WebCodecs export (H.264/AAC first, VP9/Opus fallback) |
+| `src/util.js` | Time, beat grid (120 BPM), palette, camera keyframes |
+| `music/synth.py` | Synthesis engine: oscillators, synth voices, drums, cinematic FX, mixing and mastering |
+| `music/score.py` | The cyber-electronic arrangement; every musical event is placed on a picture event (timings in `EV` in `synth.py`) |
 
-每一帧都只由时间 `t` 决定（`renderAt(t)`），所以预览、拖动和导出的画面完全一致。
-时间轴和章节边界与音乐严格对齐，修改动画时保持在 120 BPM 的拍点上（一拍 = 0.5 秒）。
+Every frame is a pure function of time `t` (`renderAt(t)`), so preview, scrubbing and export produce identical images.
+The timeline and chapter boundaries are locked to the music, so keep animation changes on the 120 BPM grid
+(one beat = 0.5 s).
 
-**重新生成配乐**（需要 Python + NumPy/SciPy + ffmpeg）：
+**Regenerating the soundtrack** (requires Python + NumPy/SciPy + ffmpeg):
 
 ```bash
-cd music && python score.py && cd ..   # → music/music.wav（约 30 秒）
-python prepare_assets.py               # → assets/music.ogg，同时重新生成字体子集
+cd music && python score.py && cd ..   # → music/music.wav (about 30 s)
+python prepare_assets.py               # → assets/music.ogg, and re-subsets the fonts
 node build.mjs
 ```
 
-**关于字体**：为了让单文件 HTML 保持小体积，`assets/` 里的中英文字体只保留了片中用到的字符。
-新增文字中如果出现子集里没有的汉字，Chrome 会自动用系统字体（苹方）显示。
-如果想要统一字体，可以用 `prepare_assets.py` 重新生成子集（需要 fontTools，
-并把脚本里的字体路径改成你本机的 Noto Sans CJK SC / Inter 字体文件）。
+**About the fonts:** to keep the single-file HTML small, the fonts in `assets/` only contain the characters used in
+the film. If you add text with a Chinese character that is not in the subset, Chrome falls back to a system font
+(PingFang on macOS). To keep a consistent typeface, re-create the subsets with `prepare_assets.py` (requires
+fontTools; point the font paths in the script at your local Noto Sans CJK SC and Inter files).
 
-## 第三方组件与许可 · Third-party notices
+## 3. Third-party notices
 
-| 组件 | 许可 | 文件 |
+| Component | License | File |
 |---|---|---|
 | [three.js](https://github.com/mrdoob/three.js) r169 | MIT | `licenses/three.js-MIT.txt` |
 | [mp4-muxer](https://github.com/Vanilagy/mp4-muxer) | MIT | `licenses/mp4-muxer-MIT.txt` |
-| Inter（字体子集） | SIL Open Font License 1.1 | `licenses/font-Inter.txt` |
-| Noto Sans CJK SC（字体子集） | SIL Open Font License 1.1 | `licenses/font-NotoSansCJK.txt` |
-| DejaVu Sans Mono（字体子集） | Bitstream Vera / DejaVu 许可 | `licenses/font-DejaVu.txt` |
+| Inter (subset) | SIL Open Font License 1.1 | `licenses/font-Inter.txt` |
+| Noto Sans CJK SC (subset) | SIL Open Font License 1.1 | `licenses/font-NotoSansCJK.txt` |
+| DejaVu Sans Mono (subset) | Bitstream Vera / DejaVu license | `licenses/font-DejaVu.txt` |
 
-`docs/index.html` 中打包了上述组件：three.js 的许可声明保留在文件末尾，全部许可文本见 `licenses/`。
+`docs/index.html` bundles these components. The three.js license notice is kept at the end of that file, and the
+full license texts are in `licenses/`.
