@@ -1,0 +1,67 @@
+HPC 之美 · The Beauty of Parallelism
+Copyright (c) 2026 意雨轻寒 / Jerry Leibniz (GitHub: @gaoxiaohan2000). All rights reserved.
+
+This repository is published for viewing and personal study only. It is NOT open-source software, and no
+license to copy, modify or redistribute it is granted, except as stated below.
+
+WITHOUT PRIOR WRITTEN PERMISSION FROM THE AUTHOR, YOU MAY NOT:
+
+  1. Repost, re-upload, mirror or otherwise redistribute the video "HPC 之美 · The Beauty of Parallelism",
+     in whole or in part, on any platform (including but not limited to Bilibili, YouTube, Douyin/TikTok,
+     WeChat Channels, Xiaohongshu, Weibo and personal websites). This includes videos exported with the
+     renderer in this repository or from the live demo.
+  2. Copy, modify, distribute, sublicense or publish the source code, soundtrack, visual design, text or
+     any other material in this repository, in whole or in part.
+  3. Use any of the above for commercial purposes.
+
+YOU MAY:
+
+  - watch the video and use the live demo at https://gaoxiaohan2000.github.io/HPC-Beauty-of-Parallelism/ ;
+  - read the source code for your own personal learning;
+  - share links to this repository, the live demo or the author's official video pages;
+  - view and fork this repository on GitHub to the extent required by the GitHub Terms of Service.
+
+THIRD-PARTY COMPONENTS
+
+The following components are included in this repository and in docs/index.html. They are NOT covered by the
+restrictions above and remain under their own licenses, whose full texts are in the licenses/ directory:
+
+  - three.js r169 ............................ MIT License
+  - mp4-muxer ................................ MIT License
+  - Inter (font subset) ...................... SIL Open Font License 1.1
+  - Noto Sans CJK SC (font subset) ........... SIL Open Font License 1.1
+  - DejaVu Sans Mono (font subset) ........... Bitstream Vera / DejaVu license
+
+For permission requests, please contact the author through GitHub (@gaoxiaohan2000).
+
+THE MATERIALS ARE PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+--------------------------------------------------------------------------------------------------------------
+
+HPC 之美 · The Beauty of Parallelism
+版权所有 (c) 2026 意雨轻寒 / Jerry Leibniz（GitHub：@gaoxiaohan2000），保留所有权利。
+
+本仓库公开仅供观看与个人学习，不是开源项目；除下文明确允许的情形外，不授予任何复制、修改或再分发的许可。
+
+未经作者书面许可，禁止：
+
+  1. 在任何平台（包括但不限于哔哩哔哩、YouTube、抖音 / TikTok、微信视频号、小红书、微博及个人网站）
+     转载、重新上传、镜像或以其他方式传播视频《HPC 之美 · The Beauty of Parallelism》的全部或部分内容，
+     包括使用本仓库渲染器或在线演示导出的视频；
+  2. 复制、修改、分发、再许可或发布本仓库中的源代码、配乐、视觉设计、文字及其他材料的全部或部分；
+  3. 将上述任何内容用于商业目的。
+
+允许：
+
+  - 观看视频，使用在线演示 https://gaoxiaohan2000.github.io/HPC-Beauty-of-Parallelism/ ；
+  - 阅读源代码用于个人学习；
+  - 分享本仓库、在线演示或作者官方视频页面的链接；
+  - 在 GitHub 服务条款要求的范围内，在 GitHub 上查看和 fork 本仓库。
+
+第三方组件
+
+本仓库及 docs/index.html 中包含的以下组件不受上述限制，仍适用其各自的许可证（全文见 licenses/ 目录）：
+three.js r169（MIT）、mp4-muxer（MIT）、Inter 与 Noto Sans CJK SC 字体子集（SIL OFL 1.1）、
+DejaVu Sans Mono 字体子集（Bitstream Vera / DejaVu 许可）。
+
+如需授权，请通过 GitHub（@gaoxiaohan2000）联系作者。

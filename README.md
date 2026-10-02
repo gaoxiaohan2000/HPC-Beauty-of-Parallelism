@@ -9,6 +9,7 @@ power wall, GPUs as AI accelerators, and FPGAs as reconfigurable hardware. It en
 - **Author:** 意雨轻寒 / Jerry Leibniz
 - **Stack:** Three.js r169 + WebGL2 + GLSL (custom particle and glow shaders) + WebCodecs export
 - **Soundtrack:** an original cyber-electronic score (120 BPM, A minor), synthesised from scratch in Python. Every hit is placed on a picture event.
+- **License:** © 2026 意雨轻寒 / Jerry Leibniz. **All rights reserved. Reposting the video is not permitted** (未经作者书面许可，禁止转载). See [LICENSE](LICENSE).
 
 ![preview](docs/preview.jpg)
 
@@ -82,3 +83,18 @@ fontTools; point the font paths in the script at your local Noto Sans CJK SC and
 
 `docs/index.html` bundles these components. The three.js license notice is kept at the end of that file, and the
 full license texts are in `licenses/`.
+
+## 4. License
+
+© 2026 意雨轻寒 / Jerry Leibniz. All rights reserved. This repository is public for viewing and personal study
+only; it is **not** open source.
+
+- **Not permitted without written permission:** reposting, re-uploading or mirroring the video (including videos
+  exported with this renderer or the live demo) on any platform; copying, modifying or redistributing the code,
+  soundtrack, visual design or text; any commercial use.
+- **Permitted:** watching the video and using the live demo, reading the code for personal learning, and sharing
+  links to this repository, the live demo or the author's official video pages.
+- Third-party components listed in section 3 remain under their own licenses.
+
+未经作者书面许可，禁止转载、重新上传或二次分发本视频及本仓库内容。完整条款见 [LICENSE](LICENSE)。
+For permission requests, please contact [@gaoxiaohan2000](https://github.com/gaoxiaohan2000).
