@@ -1,4 +1,6 @@
 node_modules/
 shots/
 *.mp4
+*.wav
 .DS_Store
+__pycache__/

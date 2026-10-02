@@ -1,4 +1,4 @@
-// node build.mjs  →  dist/HPC_3D_Renderer.html (single self-contained file)
+// node build.mjs  →  docs/index.html (single self-contained file, also served by GitHub Pages)
 import { build } from 'esbuild';
 import fs from 'fs';
 const res = await build({ entryPoints: ['src/main.js'], bundle: true, minify: true, format: 'iife', target: 'es2022', write: false, legalComments: 'eof' });
@@ -11,6 +11,6 @@ const assets = {
 let html = fs.readFileSync('src/template.html', 'utf8');
 html = html.replace('/*__ASSETS__*/', () => `window.__ASSETS=${JSON.stringify(assets)};`);
 html = html.replace('/*__BUNDLE__*/', () => js);
-fs.mkdirSync('dist', { recursive: true });
-fs.writeFileSync('dist/HPC_3D_Renderer.html', html);
-console.log('dist/HPC_3D_Renderer.html', (html.length / 1e6).toFixed(2), 'MB');
+fs.mkdirSync('docs', { recursive: true });
+fs.writeFileSync('docs/index.html', html);
+console.log('docs/index.html', (html.length / 1e6).toFixed(2), 'MB');

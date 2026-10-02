@@ -1,4 +1,4 @@
-"""Subset fonts to the characters actually used in src/, and encode the soundtrack to Opus."""
+"""Subset fonts to the characters actually used in src/, and encode music/music.wav to Opus."""
 import glob, subprocess, os
 from fontTools import subset
 from fontTools.ttLib import TTCollection
@@ -22,5 +22,6 @@ sub(N + "NotoSansCJK-Thin.ttc", "assets/noto-thin.otf", 2)
 sub("/usr/share/fonts/opentype/inter/Inter-Light.otf", "assets/inter-light.otf")
 sub("/usr/share/fonts/opentype/inter/Inter-Thin.otf", "assets/inter-thin.otf")
 sub("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", "assets/mono.ttf")
-subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "/home/claude/hpc_video/music.wav", "-c:a", "libopus", "-b:a", "160k", "assets/music.ogg"], check=True)
+# soundtrack: generate music/music.wav first with `cd music && python score.py`
+subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", "music/music.wav", "-c:a", "libopus", "-b:a", "160k", "assets/music.ogg"], check=True)
 print("assets/music.ogg", os.path.getsize("assets/music.ogg"))
